@@ -14,12 +14,16 @@ jokes = [
     "Can a kangaroo jump higher than the Empire State Building? Of course. The Empire State Building can't jump",
     "Did you hear about the kidnapping at school? It's okay. He woke up",
     "A man got hit in the head with a can of Coke, but he was alright because it was a soft drink",
+    "Why was six afraid of seven? Because seven is a convicted rapist",
+    "I spent the last two years looking for my ex-girlfriend's killer. *Sigh* But no one will do it"
+    "An Irishman walks out of a bar",
+    
 ]
 
 def show_joke(sense, marquee_proc):
-    sense.show_message("Joke Time!", 0.06, [255,255,0])
+    sense.show_message("Joke Time!", 0.05, [255,255,0])
     joke = random.choice(jokes)
-    sense.show_message(joke, 0.06,[255,255,0])
+    sense.show_message(joke, 0.05,[255,255,0])
     sense.set_pixels(happy)
     time.sleep(0.5)
     sense.clear()
