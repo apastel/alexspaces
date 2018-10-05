@@ -17,13 +17,25 @@ jokes = [
     "Why was six afraid of seven? Because seven is a convicted rapist",
     "I spent the last two years looking for my ex-girlfriend's killer. *Sigh* But no one will do it"
     "An Irishman walks out of a bar",
-    
+    "What's red and smells like blue pain? Red paint.",
+    "A dyslexic man walks into a bra",
+    "Why was six afraid of seven? It wasn't. Numbers are not sentient and thus incapable of feeling fear",
+    "What would George Washington do if he were alive today? Scream and scratch at the top of his coffin",
+    "A horse walks into a bar. Several people get up and leave as they spot the potential danger of the situation"
+]
+
+colors = [
+    [255, 255, 255], # white
+    [255, 0, 0],  # red
+    [0, 255, 0],  # green
+    [0, 0, 255]  # blue
 ]
 
 def show_joke(sense, marquee_proc):
-    sense.show_message("Joke Time!", 0.05, [255,255,0])
+    random_color = random.choice(colors)
+    sense.show_message("Joke Time!", 0.05, random_color)
     joke = random.choice(jokes)
-    sense.show_message(joke, 0.05,[255,255,0])
+    sense.show_message(joke, 0.05, random_color)
     sense.set_pixels(happy)
     time.sleep(0.5)
     sense.clear()

@@ -28,6 +28,8 @@ def get_normalized_temp():
 
 messages = [
     "The current temp is " + get_normalized_temp() +".",
+    "The current temp is " + get_normalized_temp() +".",
+    "The current temp is " + get_normalized_temp() +".",
     "AlexSpaces is not responsible for seizures, hallucinations, or motion sickness experienced while viewing AlexSpaces.",
     "Bored? Why not read the AlexSpaces binder!",
     "If you can read this, you don't need glasses.",
@@ -42,10 +44,15 @@ messages = [
     "Remember to stake down your tent when it gets windy or you're totally fucked!",
     "Our current GPS coordinates are...just kidding I have no fucking clue.",
     "The current time is " + strftime("%I:%M%P", localtime()),
-    "Press Left C to go on a mushroom trip!",
+    "Press C-Left to go on a mushroom trip!",
     "Press A to hear a bad joke!",
     "Press B to play Snake!",
-    "Press Z and absolutely nothing will happen!"
+    "Press Z and absolutely nothing will happen!",
+    "If you can read this, you are way too sober.",
+    "I wonder if anyone is still reading this.",
+    "Group picture is Saturday at 6pm!",
+    "You think you're so cool with your \"3rd dimension\". Nerd.",
+    "What's your high score in Snake? Mine is 5....th-thousand. 5 thousand."
 ]
 
 colors = [
@@ -60,6 +67,7 @@ def show_marquee():
     while True:
         message = random.choice(messages)
         sense.show_message(message, 0.05, random.choice(colors))
+        time.sleep(1)
 
 def pause_marquee():
     psutil.Process(marquee_proc.pid).suspend()
@@ -76,7 +84,9 @@ def accept_input():
         while True:
             events = get_gamepad()
             for event in events:
+                # A button pressed
                 if event.code == 'BTN_BASE' and event.state == 1 and not playing_snake:
+                    # Show joke
                     pause_marquee()
                     if rainbow_proc.pid is not None:
                         psutil.Process(rainbow_proc.pid).suspend()
@@ -89,7 +99,9 @@ def accept_input():
                         joke_proc.terminate()
                         joke_proc = Process(name='show_joke', target=joke.show_joke, args=(sense,marquee_proc))
                         joke_proc.start()
-                if event.code == 'BTN_BASE3' and event.state == 1:
+                # B button pressed
+                elif event.code == 'BTN_BASE3' and event.state == 1:
+                    # Start Snake
                     if not playing_snake:
                         playing_snake = True
                         pause_marquee()
@@ -102,11 +114,14 @@ def accept_input():
                             snake_proc.start()
                         elif psutil.Process(snake_proc.pid).status() == psutil.STATUS_STOPPED or psutil.Process(snake_proc.pid).status() == psutil.STATUS_SLEEPING:
                             psutil.Process(snake_proc.pid).resume()
+                    # End snake
                     else:
                         playing_snake = False
                         psutil.Process(snake_proc.pid).suspend()
                         resume_marquee()
-                if event.code == 'BTN_TOP' and event.state == 1 and not playing_snake:
+                # Left-C pressed
+                elif event.code == 'BTN_TOP' and event.state == 1 and not playing_snake:
+                    # Show rainbow
                     pause_marquee()
                     if joke_proc.pid is not None:
                         joke_proc.terminate()
@@ -116,6 +131,28 @@ def accept_input():
                         rainbow_proc.start()
                     elif psutil.Process(rainbow_proc.pid).status() == psutil.STATUS_STOPPED or psutil.Process(rainbow_proc.pid).status() == psutil.STATUS_SLEEPING:
                         psutil.Process(rainbow_proc.pid).resume()
+                # Up-C pressed
+                elif event.code == 'BTN_UP' and event.state == 1 and not playing_snake:
+                    # Show temp
+                    pause_marquee()
+                    if joke_proc.pid is not None:
+                        joke_proc.terminate()
+                    if snake_proc.pid is not None:
+                        psutil.Process(snake_proc.pid).suspend()
+                    if rainbow_proc.pid is not None:
+                        psutil.Process(rainbow_proc.pid).suspend()
+                    sense.show_message(get_normalized_temp(), 0.05, random.choice(colors))
+                    resume_marquee()
+                # Z pressed
+                elif event.code == "BTN_Z" and event.state == 1 and not playing_snake:
+                    # Return to marquee
+                    if joke_proc.pid is not None:
+                        joke_proc.terminate()
+                    if rainbow_proc.pid is not None:
+                        psutil.Process(rainbow_proc.pid).suspend()
+                    if snake_proc.pid is not None:
+                        psutil.Process(snake_proc.pid).suspend()
+                    resume_marquee()
 
     finally:
         clear_on_shutdown()
