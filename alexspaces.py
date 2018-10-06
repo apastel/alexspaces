@@ -52,7 +52,8 @@ messages = [
     "I wonder if anyone is still reading this.",
     "Group picture is Saturday at 6pm!",
     "You think you're so cool with your \"3rd dimension\". Nerd.",
-    "What's your high score in Snake? Mine is 5....th-thousand. 5 thousand."
+    "What's your high score in Snake? Mine is 5....th-thousand. 5 thousand.",
+    "Welcome to AlexSpaces at Molly Hearts!"
 ]
 
 colors = [
@@ -132,7 +133,7 @@ def accept_input():
                     elif psutil.Process(rainbow_proc.pid).status() == psutil.STATUS_STOPPED or psutil.Process(rainbow_proc.pid).status() == psutil.STATUS_SLEEPING:
                         psutil.Process(rainbow_proc.pid).resume()
                 # Up-C pressed
-                elif event.code == 'BTN_UP' and event.state == 1 and not playing_snake:
+                elif event.code == 'BTN_TRIGGER' and event.state == 1 and not playing_snake:
                     # Show temp
                     pause_marquee()
                     if joke_proc.pid is not None:
@@ -141,10 +142,15 @@ def accept_input():
                         psutil.Process(snake_proc.pid).suspend()
                     if rainbow_proc.pid is not None:
                         psutil.Process(rainbow_proc.pid).suspend()
-                    sense.show_message(get_normalized_temp(), 0.05, random.choice(colors))
+                    temp = get_normalized_temp()
+                    random_color = random.choice(colors)
+                    sense.show_message(temp, 0.05, random_color)
+                    sense.show_message(temp, 0.05, random_color)
+                    sense.show_message(temp, 0.05, random_color)
+                    time.sleep(1)
                     resume_marquee()
                 # Z pressed
-                elif event.code == "BTN_Z" and event.state == 1 and not playing_snake:
+                elif event.code == "BTN_BASE2" and event.state == 1 and not playing_snake:
                     # Return to marquee
                     if joke_proc.pid is not None:
                         joke_proc.terminate()
