@@ -17,7 +17,7 @@ jokes = [
     "Why was six afraid of seven? Because seven is a convicted rapist",
     "I spent the last two years looking for my ex-girlfriend's killer. *Sigh* But no one will do it"
     "An Irishman walks out of a bar",
-    "What's red and smells like blue pain? Red paint.",
+    "What's red and smells like blue paint? Red paint.",
     "A dyslexic man walks into a bra",
     "Why was six afraid of seven? It wasn't. Numbers are not sentient and thus incapable of feeling fear",
     "What would George Washington do if he were alive today? Scream and scratch at the top of his coffin",
