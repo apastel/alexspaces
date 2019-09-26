@@ -8,7 +8,7 @@ import rainbow
 import joke
 import datetime
 import snake.src.main as Snake
-from sense_hat import SenseHat
+from sense_emu import SenseHat
 from inputs import get_gamepad
 from multiprocessing import Process, Event
 from time import localtime, strftime
@@ -20,10 +20,10 @@ def clear_on_shutdown():
     sense.clear()
 
 def get_normalized_temp():
-    cpu_temp = int(subprocess.check_output("cat /sys/class/thermal/thermal_zone0/temp", shell=True)) / 1000
+    #cpu_temp = int(subprocess.check_output("cat /sys/class/thermal/thermal_zone0/temp", shell=True)) / 1000
     average_temp = (sense.get_temperature_from_pressure() + sense.get_temperature_from_humidity()) / 2
-    display_temp_celsius = average_temp - (cpu_temp - average_temp)
-    display_temp_fahrenheit = display_temp_celsius * 9/5 + 32
+    #display_temp_celsius = average_temp - (cpu_temp - average_temp)
+    display_temp_fahrenheit = average_temp * 9/5 + 32
     return str(int(round(display_temp_fahrenheit)))
 
 messages = [

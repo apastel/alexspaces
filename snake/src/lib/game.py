@@ -1,9 +1,9 @@
 from __future__ import print_function
-from board import Board
-from apple import Apple
+from .board import Board
+from .apple import Apple
 from mock import MagicMock, patch
 from random import randint
-from snake import Snake
+from .snake import Snake
 from tinydb import TinyDB, Query
 from inputs import get_gamepad
 import math

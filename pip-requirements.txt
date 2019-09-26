@@ -1,0 +1,7 @@
+psutil
+sense-emu
+pycairo
+PyGObject
+tinydb
+mock
+inputs
