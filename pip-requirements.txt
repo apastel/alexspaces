@@ -1,9 +1,8 @@
+inputs
+mock
 psutil
 pygame
 tinydb
-mock
-inputs
-
-sense-emu
 pycairo
 PyGObject
+sense-emu
