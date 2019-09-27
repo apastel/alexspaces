@@ -17,8 +17,8 @@ class Board:
 
     def __generate(self):
         self.COORDINATES = [
-            [0 for x in xrange(self.COLUMNS)]
-            for y in xrange(self.ROWS)
+            [0 for x in range(self.COLUMNS)]
+            for y in range(self.ROWS)
         ]
 
     def columns(self):

@@ -88,8 +88,8 @@ class Snake:
             return self.COORDINATES
 
         coordinates = [
-            [False for x in xrange(columns)]
-            for y in xrange(rows)
+            [False for x in range(columns)]
+            for y in range(rows)
         ]
 
         for segment in self.SEGMENTS:
