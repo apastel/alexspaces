@@ -27,12 +27,26 @@ if not _is_package_installed('python3-venv'):
     subprocess.run(['sudo', 'apt', '-y', 'install', 'python3-venv'], check=True)
     print('Attempting to install python3-venv...DONE.')
 
+subprocess.run(['sudo', 'apt', '-y', 'install', 'libgirepository1.0-dev', 'gcc', 'libcairo2-dev', 'pkg-config', 'python3-dev', 'gir1.2-gtk-3.0'], check=True)
+
 print('Initializing python3-venv...')
 # Creates a Virtual Environment containing Python3 and Pip3
 subprocess.run(['python3', '-m', 'venv', 'venv'], check=True)
 # Install dependencies into local venv
 subprocess.run(['venv/bin/pip', 'install', '-r', 'pip-requirements.txt'], check=True)
 print('Initializing python3-venv...DONE.')
+
+# Launch sense emulator gui inside the venv
+cmd_line = ['venv/bin/python3', 'venv/bin/sense_emu_gui']
+cmd_line.extend(sys.argv[1:])
+try:
+    subprocess.Popen(cmd_line)
+except subprocess.CalledProcessError as e:
+    if e.returncode == 11:
+        # Indicates that the subprocess already printed the error.
+        exit(11)
+    else:
+        raise e
 
 # Launch main script inside the venv
 cmd_line = ['venv/bin/python3', 'alexspaces.py']

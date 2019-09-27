@@ -1,7 +1,9 @@
 psutil
-sense-emu
-pycairo
-PyGObject
+pygame
 tinydb
 mock
 inputs
+
+sense-emu
+pycairo
+PyGObject

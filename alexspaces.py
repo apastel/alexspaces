@@ -163,7 +163,6 @@ def accept_input():
     finally:
         clear_on_shutdown()
 
-sense.set_rotation(180)
 sense.load_image("heart.png")
 time.sleep(3)
 
