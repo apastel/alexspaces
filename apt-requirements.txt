@@ -1,2 +1,6 @@
 python3-venv
-sense-hat
+python3-dev
+libatlas-base-dev
+libopenjp2-7
+libsdl1.2debian
+libsdl-ttf2.0-0

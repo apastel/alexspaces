@@ -39,7 +39,7 @@ subprocess.run(['venv/bin/pip', 'install', '-r', 'pip-requirements.txt'], check=
 print('Initializing python3-venv...DONE.')
 
 # Launch main script inside the venv
-cmd_line = ['venv/bin/python3', 'alexspaces.py']
+cmd_line = ['sudo', 'venv/bin/python3', 'alexspaces.py']
 cmd_line.extend(sys.argv[1:])
 try:
     subprocess.run(cmd_line, check=True)

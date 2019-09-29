@@ -3,3 +3,5 @@ mock
 psutil
 pygame
 tinydb
+sense-hat
+rtimulib
