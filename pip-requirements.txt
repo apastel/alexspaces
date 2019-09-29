@@ -3,6 +3,3 @@ mock
 psutil
 pygame
 tinydb
-pycairo
-PyGObject
-sense-emu

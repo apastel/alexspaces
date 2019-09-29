@@ -2,7 +2,7 @@ from __future__ import print_function
 from .lib.game import Game
 import atexit
 from . import config
-from sense_emu import SenseHat
+from sense_hat import SenseHat
 
 
 def main(sense):

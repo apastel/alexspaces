@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import time
-from sense_emu import SenseHat
+from sense_hat import SenseHat
 
 sense = SenseHat()
 
