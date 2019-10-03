@@ -1,0 +1,11 @@
+[Unit]
+Description=AlexSpaces
+After=network.target
+
+[Service]
+ExecStart=/home/pi/alexspaces/run_me.py
+WorkingDirectory=/home/pi/alexspaces
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
