@@ -26,6 +26,10 @@ def get_normalized_temp():
     display_temp_fahrenheit = average_temp * 9/5 + 32
     return str(int(round(display_temp_fahrenheit)))
 
+images = {
+    "heart": "heart.png"
+}
+
 messages = [
     "The current temp is " + get_normalized_temp() +".",
     "The current temp is " + get_normalized_temp() +".",
@@ -33,15 +37,12 @@ messages = [
     "AlexSpaces is not responsible for seizures, hallucinations, or motion sickness experienced while viewing AlexSpaces.",
     "Bored? Why not read the AlexSpaces binder!",
     "If you can read this, you don't need glasses.",
-    "Yoga is on Sunday morning with Justice Klein. Namaste.",
-    "Molly Hearts lineup features Arielle Z, Artifax, Chrysocolla, Drummer John, Eric Medina b2b JNAV, Miguel Rios, MRNG, Sparrow, The Potted Plants, and Metallica",
-    "Bored? Check out Kirsten's fantastic rack!",
+    "Molly Hearts lineup features Arielle Z, Chrysocolla, Drummer John, Sparrow, Molly Hearts (Rap Performance), and Metallica",
+    "Bored? Check out Kirsten's rack!",
     "Why are you still reading this? Go party!",
     "What is AlexSpaces anyway? Hell if I know...",
     "How do you turn this thing off? It's too bright.",
     "Please kill me, Alex only programmed me to feel pain and nothing else.",
-    "Ready for the Saturday hike? Oh shit it happened already? Fuck.",
-    "Remember to stake down your tent when it gets windy or you're totally fucked!",
     "Our current GPS coordinates are...just kidding I have no fucking clue.",
     "The current time is " + strftime("%I:%M%P", localtime()),
     "Press C-Left to go on a mushroom trip!",
@@ -50,10 +51,12 @@ messages = [
     "Press Z and absolutely nothing will happen!",
     "If you can read this, you are way too sober.",
     "I wonder if anyone is still reading this.",
-    "Group picture is Saturday at 6pm!",
     "You think you're so cool with your \"3rd dimension\". Nerd.",
     "What's your high score in Snake? Mine is 5....th-thousand. 5 thousand.",
-    "Welcome to AlexSpaces at Molly Hearts!"
+    "Welcome to AlexSpaces at Molly Hearts!",
+    "Please don't put me near the fire again.",
+    "I've got a fever, and the only prescription is ibuprofen!",
+    "Check out the fire performances!",
 ]
 
 colors = [
@@ -68,7 +71,9 @@ def show_marquee():
     while True:
         message = random.choice(messages)
         sense.show_message(message, 0.05, random.choice(colors))
-        time.sleep(1)
+        time.sleep(0.5)
+        sense.load_image(images.get("heart"))
+        time.sleep(2)
 
 def pause_marquee():
     psutil.Process(marquee_proc.pid).suspend()
@@ -144,6 +149,7 @@ def accept_input():
                         psutil.Process(rainbow_proc.pid).suspend()
                     temp = get_normalized_temp()
                     random_color = random.choice(colors)
+                    sense.show_message("The current temp is ", 0.05, random_color)
                     sense.show_message(temp, 0.05, random_color)
                     sense.show_message(temp, 0.05, random_color)
                     sense.show_message(temp, 0.05, random_color)
@@ -163,7 +169,7 @@ def accept_input():
     finally:
         clear_on_shutdown()
 
-sense.load_image("heart.png")
+sense.load_image(images.get("heart"))
 time.sleep(3)
 
 marquee_proc = Process(name='auto_marquee', target=show_marquee, args=())
