@@ -10,7 +10,7 @@ Across these 64 pixels moves the words, shapes, and colors that comprise a 2D un
 
 ## What is this alien-shaped gamepad connected to it? 
 
-![controller](controller.png)
+![controller](resources/controller.png)
 
 The AlexSpaces Function Controller™ is a futuristic look into the possible world of 2D gaming.  
 The confusing layout of the gamepad buttons reflect the hazy future of a world where things aren’t what they seem.  

@@ -1,5 +1,6 @@
 import atexit
 import os
+import yaml
 import subprocess
 import random
 import time
@@ -8,10 +9,10 @@ import rainbow
 import joke
 import datetime
 import snake.src.main as Snake
+import messages.marquee
 from sense_hat import SenseHat
 from inputs import get_gamepad
 from multiprocessing import Process, Event
-from time import localtime, strftime
 
 sense = SenseHat()
 
@@ -27,37 +28,8 @@ def get_normalized_temp():
     return str(int(round(display_temp_fahrenheit)))
 
 images = {
-    "heart": "heart.png"
+    "heart": "resources/heart.png"
 }
-
-messages = [
-    "The current temp is " + get_normalized_temp() +".",
-    "The current temp is " + get_normalized_temp() +".",
-    "The current temp is " + get_normalized_temp() +".",
-    "AlexSpaces is not responsible for seizures, hallucinations, or motion sickness experienced while viewing AlexSpaces.",
-    "Bored? Why not read the AlexSpaces binder!",
-    "If you can read this, you don't need glasses.",
-    "Molly Hearts lineup features Arielle Z, Chrysocolla, Drummer John, Sparrow, Molly Hearts (Rap Performance), and Metallica",
-    "Bored? Check out Kirsten's rack!",
-    "Why are you still reading this? Go party!",
-    "What is AlexSpaces anyway? Hell if I know...",
-    "How do you turn this thing off? It's too bright.",
-    "Please kill me, Alex only programmed me to feel pain and nothing else.",
-    "Our current GPS coordinates are...just kidding I have no fucking clue.",
-    "The current time is " + strftime("%I:%M%P", localtime()),
-    "Press C-Left to go on a mushroom trip!",
-    "Press A to hear a bad joke!",
-    "Press B to play Snake!",
-    "Press Z and absolutely nothing will happen!",
-    "If you can read this, you are way too sober.",
-    "I wonder if anyone is still reading this.",
-    "You think you're so cool with your \"3rd dimension\". Nerd.",
-    "What's your high score in Snake? Mine is 5....th-thousand. 5 thousand.",
-    "Welcome to AlexSpaces at Molly Hearts!",
-    "Please don't put me near the fire again.",
-    "I've got a fever, and the only prescription is ibuprofen!",
-    "Check out the fire performances!",
-]
 
 colors = [
     [255, 255, 255], # white
@@ -67,7 +39,8 @@ colors = [
 ]
 
 def show_marquee():
-    sense.show_message("Welcome to AlexSpaces at Molly Hearts!", 0.05)
+    sense.show_message("Welcome to AlexSpaces at Couchella!", 0.05)
+    messages = marquee.marquee_messages
     while True:
         message = random.choice(messages)
         sense.show_message(message, 0.05, random.choice(colors))
@@ -169,11 +142,18 @@ def accept_input():
     finally:
         clear_on_shutdown()
 
-sense.load_image(images.get("heart"))
-time.sleep(3)
+def main():
+    config = yaml.safe_load(open('config.yaml'))
+    sense.set_rotation(config['rotation'])
+    sense.load_image(images.get("heart"))
+    time.sleep(3)
 
-marquee_proc = Process(name='auto_marquee', target=show_marquee, args=())
-input_proc = Process(name='accept_intput', target=accept_input, args=())
-marquee_proc.start()
-input_proc.start()
+    global marquee_proc
+    global input_proc
+    marquee_proc = Process(name='auto_marquee', target=show_marquee, args=())
+    input_proc = Process(name='accept_intput', target=accept_input, args=())
+    marquee_proc.start()
+    input_proc.start()
 
+if __name__ == "__main__":
+    main()

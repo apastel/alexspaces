@@ -1,4 +1,5 @@
 wheel
+pyyaml
 inputs
 mock
 psutil
