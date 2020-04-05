@@ -1,5 +1,5 @@
 # What is AlexSpaces?
-
+![alexspaces](https://thumbs.gfycat.com/InbornMeatyGnatcatcher-size_restricted.gif)
 ## What if there were not one, but two dimensions?
 That’s the question that AlexSpaces attempts to answer.  
 Imagine a world where the space you move through has not only width, but also length! Thanks to modern advances in computing, you no longer have to imagine it.
@@ -18,6 +18,7 @@ Some buttons are big, some are different colors, wait there’s a button on the 
 Notice the strange three-prong handles...does this mean humans of the future will have three hands? Probably! 
 
 ## What is Snake?
+![snake](https://thumbs.gfycat.com/ExcellentAdoredJaeger-size_restricted.gif)  
 Snake is a brand new 2-dimensional game of the future.  
 In it, you control a photorealistic python as it navigates a maze, attempting to eat apples (what?) and avoid walls (why?). 
 While playing Snake, it is not uncommon to feel like you may have played this exact game before, and possibly on a better screen.  
