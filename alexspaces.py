@@ -9,7 +9,7 @@ import rainbow
 import joke
 import datetime
 import snake.src.main as Snake
-import messages.marquee
+import messages.marquee as marquee
 from sense_hat import SenseHat
 from inputs import get_gamepad
 from multiprocessing import Process, Event
