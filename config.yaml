@@ -1,2 +1,8 @@
+# This will appear as the "Welcome to [event_name]!" message
 event_name: Couchella
+
+# Rotation of pixel grid. Depends how you orient the Pi on a table.
 rotation: 180 # 0, 90, 180, or 270
+
+# Reading the marquee is comfortable at 0.05. The higher the number, the slower it will scroll.
+scroll_speed: 0.05

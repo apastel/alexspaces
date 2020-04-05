@@ -39,11 +39,11 @@ colors = [
 ]
 
 def show_marquee():
-    sense.show_message("Welcome to AlexSpaces at Couchella!", 0.05)
-    messages = marquee.marquee_messages
+    sense.show_message(f"Welcome to AlexSpaces at {config['event_name']}!", config['scroll_speed'])
+    messages = marquee.marquee_messages + marquee.couchella_messages
     while True:
         message = random.choice(messages)
-        sense.show_message(message, 0.05, random.choice(colors))
+        sense.show_message(message, config['scroll_speed'], random.choice(colors))
         time.sleep(0.5)
         sense.load_image(images.get("heart"))
         time.sleep(2)
@@ -122,10 +122,10 @@ def accept_input():
                         psutil.Process(rainbow_proc.pid).suspend()
                     temp = get_normalized_temp()
                     random_color = random.choice(colors)
-                    sense.show_message("The current temp is ", 0.05, random_color)
-                    sense.show_message(temp, 0.05, random_color)
-                    sense.show_message(temp, 0.05, random_color)
-                    sense.show_message(temp, 0.05, random_color)
+                    sense.show_message("The current temp is ", config['scroll_speed'], random_color)
+                    sense.show_message(temp, config['scroll_speed'], random_color)
+                    sense.show_message(temp, config['scroll_speed'], random_color)
+                    sense.show_message(temp, config['scroll_speed'], random_color)
                     time.sleep(1)
                     resume_marquee()
                 # Z pressed
@@ -143,6 +143,7 @@ def accept_input():
         clear_on_shutdown()
 
 def main():
+    global config
     config = yaml.safe_load(open('config.yaml'))
     sense.set_rotation(config['rotation'])
     sense.load_image(images.get("heart"))

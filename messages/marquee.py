@@ -8,7 +8,6 @@ marquee_messages = [
     "AlexSpaces is not responsible for seizures, hallucinations, or motion sickness experienced while viewing AlexSpaces.",
     "Bored? Why not read the AlexSpaces binder!",
     "If you can read this, you don't need glasses.",
-    "Molly Hearts lineup features Arielle Z, Chrysocolla, Drummer John, Sparrow, Molly Hearts (Rap Performance), and Metallica",
     "Bored? Check out Kirsten's rack!",
     "Why are you still reading this? Go party!",
     "What is AlexSpaces anyway? Hell if I know...",
@@ -26,11 +25,17 @@ marquee_messages = [
     "What's your high score in Snake? Mine is 5....th-thousand. 5 thousand.",
     "Please don't put me near the fire again.",
     "I've got a fever, and the only prescription is ibuprofen!",
-    "Be sure to have lots of sex with your quarantine buddy",
+    "Do a Bongzilla!",
+]
+
+mollyhearts_messages = [
+    "Molly Hearts lineup features Arielle Z, Chrysocolla, Drummer John, Sparrow, Molly Hearts (Rap Performance), and Metallica",
+]
+
+couchella_messages = [
     "Hope you are enjoying the Couchella performances by Lana Del Rey, Lorde, RATM, and such",
     "Couchella!",
     "Welcome to Couchella at Kirsten and Alex's house!",
     "What happens at Couchella, stays at Couchella. Except herpes.",
-    "Do a Bongzilla!",
-    "I sure hope this quarantine ends soon"
+    "I sure hope this quarantine ends soon",
 ]
